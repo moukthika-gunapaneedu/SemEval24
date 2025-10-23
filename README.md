@@ -14,7 +14,7 @@ Official task page: [https://nlu-lab.github.io/semeval.html](https://nlu-lab.git
 | Jacqui | [@jafa4364](https://github.com/jafa4364) |
 | Moukthika | [@moukthika-gunapaneedu](https://github.com/moukthika-gunapaneedu) |
 
-📂 **GitHub Repository:** [https://github.com/moukthika-gunapaneedu/SemEval24](https://github.com/moukthika-gunapaneedu/SemEval24)
+**GitHub Repository:** [https://github.com/moukthika-gunapaneedu/SemEval24](https://github.com/moukthika-gunapaneedu/SemEval24)
 
 
 ## Task Overview
