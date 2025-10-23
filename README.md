@@ -23,16 +23,16 @@ Traditional **Word Sense Disambiguation (WSD)** assumes a single “correct” s
 **SemEval 2026 Task 5** aims to predict **human-perceived plausibility** of different word senses in context, modeling how humans interpret ambiguous meanings within a story.
 
 The dataset, **AmbiStory**, consists of **five-sentence short stories**, each divided into:
-1. **Precontext (3 sentences)** — sets up the narrative  
-2. **Ambiguous Sentence (1 sentence)** — contains a homonym with multiple senses  
-3. **Ending (optional)** — may imply one interpretation over another  
+1. **Precontext (3 sentences)** - sets up the narrative  
+2. **Ambiguous Sentence (1 sentence)** - contains a homonym with multiple senses  
+3. **Ending (optional)** - may imply one interpretation over another  
 
 Each story is annotated by human participants who rate each possible word sense on a **scale from 1 to 5**, resulting in multiple samples per story.
 
 
 ## Task and Evaluation Metrics
 
-The model must output a **plausibility score (1–5)** for a given word sense within a story.
+The model must output a **plausibility score (1-5)** for a given word sense within a story.
 
 | Metric | Description |
 |:--|:--|
