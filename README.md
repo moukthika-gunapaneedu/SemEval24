@@ -1,5 +1,6 @@
 # SemEval 2026 Task 5
-## Rating Plausibility of Word Senses in Ambiguous Sentences through Narrative Understanding
+
+**Rating Plausibility of Word Senses in Ambiguous Sentences through Narrative Understanding**
 
 This repository contains our team’s work for **SemEval 2026 Task 5**, which focuses on modeling human-like understanding of **ambiguous word senses** within short narratives.  
 Official task page: [https://nlu-lab.github.io/semeval.html](https://nlu-lab.github.io/semeval.html)
