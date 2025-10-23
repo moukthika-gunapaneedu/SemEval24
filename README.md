@@ -5,7 +5,6 @@
 This repository contains our team’s work for **SemEval 2026 Task 5**, which focuses on modeling human-like understanding of **ambiguous word senses** within short narratives.  
 Official task page: [https://nlu-lab.github.io/semeval.html](https://nlu-lab.github.io/semeval.html)
 
----
 
 ## Team 
 
@@ -17,7 +16,6 @@ Official task page: [https://nlu-lab.github.io/semeval.html](https://nlu-lab.git
 
 📂 **GitHub Repository:** [https://github.com/moukthika-gunapaneedu/SemEval24](https://github.com/moukthika-gunapaneedu/SemEval24)
 
----
 
 ## Task Overview
 
@@ -31,7 +29,6 @@ The dataset, **AmbiStory**, consists of **five-sentence short stories**, each di
 
 Each story is annotated by human participants who rate each possible word sense on a **scale from 1 to 5**, resulting in multiple samples per story.
 
----
 
 ## Task and Evaluation Metrics
 
@@ -43,5 +40,3 @@ The model must output a **plausibility score (1–5)** for a given word sense wi
 | **Accuracy Within Standard Deviation** | Percentage of predictions within ±1 standard deviation of human scores. |
 
 This encourages both **correlation with human intuition** and **robustness to ambiguity**.
-
----
