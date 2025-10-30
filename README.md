@@ -19,9 +19,6 @@ Official task page: [https://nlu-lab.github.io/semeval.html](https://nlu-lab.git
 
 ## Task Overview
 
-![example](sample.png)
-
-
 Traditional **Word Sense Disambiguation (WSD)** assumes a single “correct” sense for a word, but real-world understanding is far more nuanced.  
 **SemEval 2026 Task 5** aims to predict **human-perceived plausibility** of different word senses in context, modeling how humans interpret ambiguous meanings within a story.
 
