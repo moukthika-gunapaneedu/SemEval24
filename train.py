@@ -9,6 +9,7 @@ from transformers import (
     Trainer,
     TrainingArguments
 )
+from scipy.stats import spearmanr
 
 ### ------------------------
 ### Load JSON as DataFrame
@@ -61,7 +62,7 @@ class SemEvalDataset(Dataset):
         )
 
         item = {k: torch.tensor(v) for k, v in enc.items()}
-        item["labels"] = torch.tensor([r["average"]], dtype=torch.float32)
+        item["labels"] = torch.tensor(r["average"], dtype=torch.float32)
         return item
 
 
@@ -70,27 +71,36 @@ class SemEvalDataset(Dataset):
 ### ------------------------
 
 def compute_metrics(eval_pred):
+    """
+    Computes:
+      - MSE (mean squared error)
+      - Spearman correlation between predictions and gold labels
+      - Accuracy within ~1 std-dev (here approximated as |pred - gold| <= 0.75)
+    """
     preds, labels = eval_pred
+
+    # preds shape: (N, 1) for regression, labels shape: (N, 1)
     preds = preds.reshape(-1)
     labels = labels.reshape(-1)
 
+    # Mean Squared Error
     mse = float(np.mean((preds - labels) ** 2))
 
-    # Spearman
-    from scipy.stats import spearmanr
+    # Spearman correlation
     sp, _ = spearmanr(preds, labels)
     if np.isnan(sp):
         sp = 0.0
 
-    # accuracy within sigma=0.75 (approx baseline)
+    # "Accuracy within 1 SD" (approx): treat 0.75 as 1 std dev band
     sigma = 0.75
-    acc = float(np.mean(np.abs(preds - labels) <= sigma))
+    acc_within_sd = float(np.mean(np.abs(preds - labels) <= sigma))
 
     return {
         "mse": mse,
         "spearman": sp,
-        "acc_within_sd": acc,
+        "acc_within_sd": acc_within_sd,
     }
+
 
 
 ### ------------------------
@@ -129,13 +139,13 @@ def main():
 
 
     trainer = Trainer(
-        model=model,
-        args=training_args,
-        train_dataset=train_ds,
-        eval_dataset=dev_ds,
-        tokenizer=tokenizer,
-        compute_metrics=compute_metrics,
+    model=model,
+    args=training_args,
+    train_dataset=train_ds,
+    eval_dataset=dev_ds,
+    compute_metrics=compute_metrics,
     )
+
 
     trainer.train()
     trainer.save_model("./model")
