@@ -63,18 +63,18 @@ Each story includes multiple human ratings for each possible sense (1–5).
 
 # How to Run
 
-## 1. Install dependencies
+1. Install dependencies
 
 `pip install -r requirements.txt`
 
 
-## 2. Train the model
+2. Train the model
 
 `python train.py`
 
 This trains a RoBERTa-based regression model on the training set.
 
-## 3. Generate predictions
+3. Generate predictions
 
 When the test set is released:
 `python predict.py --input_file test.json --output_file predictions.csv`
