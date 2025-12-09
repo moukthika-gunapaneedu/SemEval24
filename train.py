@@ -135,8 +135,8 @@ def main():
     logging_steps=50,
     save_steps=500,
     eval_steps=500,
+    evaluation_strategy="epoch",   # <--- add this
     )
-
 
     trainer = Trainer(
     model=model,
@@ -146,8 +146,15 @@ def main():
     compute_metrics=compute_metrics,
     )
 
-
     trainer.train()
+
+    eval_results = trainer.evaluate()
+    print("Dev metrics:", eval_results)
+
+    import json as _json
+    with open("dev_metrics.json", "w") as f:
+        _json.dump(eval_results, f, indent=2)
+
     trainer.save_model("./model")
 
 if __name__ == "__main__":
