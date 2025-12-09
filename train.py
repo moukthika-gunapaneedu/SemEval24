@@ -135,7 +135,6 @@ def main():
     logging_steps=50,
     save_steps=500,
     eval_steps=500,
-    evaluation_strategy="epoch",   # <--- add this
     )
 
     trainer = Trainer(
@@ -146,8 +145,17 @@ def main():
     compute_metrics=compute_metrics,
     )
 
+    trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=train_ds,
+    eval_dataset=dev_ds,
+    compute_metrics=compute_metrics,
+)
+
     trainer.train()
 
+    # NEW: run evaluation on dev and save metrics
     eval_results = trainer.evaluate()
     print("Dev metrics:", eval_results)
 
@@ -156,6 +164,7 @@ def main():
         _json.dump(eval_results, f, indent=2)
 
     trainer.save_model("./model")
+
 
 if __name__ == "__main__":
     main()
