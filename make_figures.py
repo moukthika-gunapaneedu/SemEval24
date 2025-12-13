@@ -9,15 +9,15 @@ with open("dev.json", "r") as f:
 rows = []
 for k, v in dev_data.items():
     rows.append({
-        "id": str(k),                         # force string IDs
+        "id": str(k),                      
         "gold": float(v.get("average", 0.0)),
     })
 gold_df = pd.DataFrame(rows)
 gold_df["id"] = gold_df["id"].astype(str)
 
 # 2. Load predictions from predict.py
-pred_df = pd.read_csv("predictions.csv")      # file you already have
-pred_df["id"] = pred_df["id"].astype(str)     # <<< FIX: int -> str
+pred_df = pd.read_csv("predictions.csv")      
+pred_df["id"] = pred_df["id"].astype(str)  
 pred_df = pred_df.rename(columns={"prediction": "pred"})
 
 print("gold_df dtype:", gold_df["id"].dtype)
